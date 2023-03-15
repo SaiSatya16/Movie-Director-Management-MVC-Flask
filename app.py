@@ -13,6 +13,11 @@ app.app_context().push()
 
 #==============================Controllers=================================
 
+#===================Displays all Rigistered Directors======================
+@app.route('/',methods=['GET','POST'])
+def all_diretors():
+    directors = Director.query.all()
+    return render_template('all_dirs.html', directors = directors)
 
 
 
