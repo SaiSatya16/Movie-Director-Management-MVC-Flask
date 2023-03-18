@@ -84,6 +84,14 @@ def delete_movie(id):
     db.session.delete(m1)
     db.session.commit()
     return redirect('/all_movies')
+#===================Delete a Director======================================
+@app.route("/delete_dir/<int:id>",methods=["GET","POST"])
+def delete_director(id):
+    d1 = Director.query.get(id)
+    d1 = Director.query.get(id)
+    db.session.delete(d1)
+    db.session.commit() 
+    return redirect('/')
 
 if __name__ == "__main__":
     app.run(debug=True)
