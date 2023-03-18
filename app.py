@@ -99,6 +99,15 @@ def update_movie(id):
     m1 = Movie.query.get(id)
     directors = m1.creator
     return render_template("directors_of_movie.html", m1 = m1, directors = directors)
+#===============Deletes the Director of specific Movie=====================
+@app.route("/update_movie/<int:mid>/del_dir_for_movie/<int:did>",methods=["GET","POST"])
+def del_dir_for_movie(mid,did):
+    d1 = Director.query.get(did)
+    m1 = Movie.query.get(mid)
+    m1.creator.remove(d1)
+    db.session.add(m1)
+    db.session.commit()
+    return redirect('/all_movies')
 
 if __name__ == "__main__":
     app.run(debug=True)
