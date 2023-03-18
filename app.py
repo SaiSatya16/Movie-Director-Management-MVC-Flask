@@ -77,6 +77,14 @@ def assign(id):
         db.session.commit()
         return redirect('/all_movies')
 
+#===================Delete a Movie=========================================
+@app.route("/delete_movie/<int:id>",methods=["GET","POST"])
+def delete_movie(id):
+    m1 = Movie.query.get(id)
+    db.session.delete(m1)
+    db.session.commit()
+    return redirect('/all_movies')
+
 if __name__ == "__main__":
     app.run(debug=True)
 
