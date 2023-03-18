@@ -52,7 +52,16 @@ def director_movie(id):
     d1 = Director.query.get(id)
     movies = d1.films
     return render_template("movies_by_director.html", d1 = d1, movies = movies)
-
+#==================Deletes the movie of specific Director==================
+@app.route("/see_movie/<int:mid>/del_dir_for_movie/<int:did>",methods=["GET","POST"])
+def del_mov_by_dir(mid,did):
+    d1 = Director.query.get(did)
+    m1 = Movie.query.get(mid)
+    d1.films.remove(m1)  
+    #m1.creator.remove(d1)
+    db.session.add(d1)
+    db.session.commit()
+    return redirect('/')
 
 
 if __name__ == "__main__":
