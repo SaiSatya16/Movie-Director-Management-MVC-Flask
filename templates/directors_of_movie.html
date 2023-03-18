@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = 'utf-8'>
+    <meta http-equiv="X-UA-Comptible" content = "IE=edge">
+    <meta name = "viewport" content="width=devie-width, initial-scale=1.0">
+    <title>All Directors of {{m1.name}} </title>
+</head>
+<body>
+    {% if directors|length == 0 %}
+    <h1> No Directors Found</h1>
+
+    {% else %}
+    <h1>Registered Directors for {{m1.name}}</h1>
+    <table>
+        <tr>
+            <th>ID</th> 
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for director in directors %}
+            <tr>
+                <td>{{director.d_id}}</td>
+                <td>{{director.name}}</td>
+                <td>                  
+                    <a type = "button" href="/update_movie/{{m1.m_id}}/del_dir_for_movie/{{director.d_id}}">Delete</a>  
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <div>
+        <a href="/all_movies">See all Movies</a>
+    </div>
+    <div>
+        <a href="/assign/{{m1.m_id}}">Assign Director</a>
+    </div>
+</body>
+</html>

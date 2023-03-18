@@ -93,6 +93,13 @@ def delete_director(id):
     db.session.commit() 
     return redirect('/')
 
+#========Displays Directors of Movie to update (assign or delete)==========
+@app.route("/update_movie/<int:id>",methods=["GET","POST"])
+def update_movie(id):
+    m1 = Movie.query.get(id)
+    directors = m1.creator
+    return render_template("directors_of_movie.html", m1 = m1, directors = directors)
+
 if __name__ == "__main__":
     app.run(debug=True)
 
