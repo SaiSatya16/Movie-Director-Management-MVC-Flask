@@ -19,7 +19,17 @@ def all_diretors():
     directors = Director.query.all()
     return render_template('all_dirs.html', directors = directors)
 
-
+#===================Add a new Director====================================
+@app.route('/add_director', methods=['GET','POST'])
+def add_director():
+    if request.method == 'GET':
+        return render_template('add_dir_form.html')
+    if request.method == 'POST':
+        d_name = request.form.get('d_name')
+        d1 = Director(name = d_name)
+        db.session.add(d1)
+        db.session.commit()
+        return redirect('/')
 
 
 
