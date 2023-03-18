@@ -35,7 +35,17 @@ def add_director():
 def all_movies():
     movies = Movie.query.all()
     return render_template('all_movs.html', movies = movies)
-
+#==================Add a New Movie=========================================
+@app.route('/add_movie', methods=['GET','POST'])
+def add_movie():
+    if request.method == 'GET':
+        return render_template('add_mov_form.html')
+    if request.method == 'POST':
+        m_name = request.form.get('m_name')
+        m1 = Movie(name = m_name)
+        db.session.add(m1)
+        db.session.commit()
+        return redirect('/all_movies')
 
 
 
