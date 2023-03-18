@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign</title>
+</head>
+<body>
+    <h1>Assign Director for {{m1.name}}</h1>
+    <form action="/assign/{{m1.m_id}}" method="post">
+        <label for="dirs">Select Director</label>
+        <select name ="d_id" id ="">
+            {% for director in directors%}
+                <option value="{{director.d_id}}">{{director.name}}</option>
+            {% endfor %}
+        </select>
+        <input type = "submit" value="Assign">
+    </form>
+</body>
+</html>

@@ -62,7 +62,20 @@ def del_mov_by_dir(mid,did):
     db.session.add(d1)
     db.session.commit()
     return redirect('/')
-
+#==================Assign Director to the Movie============================
+@app.route("/assign/<int:id>",methods=["GET","POST"])
+def assign(id):
+    m1 = Movie.query.get(id)
+    if request.method == 'GET':
+        directors = Director.query.all()
+        return render_template('assign_dir.html',directors=directors,m1=m1)
+    if request.method == 'POST':
+        d_id = request.form.get('d_id')
+        director = Director.query.get(int(d_id))
+        m1.creator.append(director)
+        db.session.add(m1)
+        db.session.commit()
+        return redirect('/all_movies')
 
 if __name__ == "__main__":
     app.run(debug=True)
