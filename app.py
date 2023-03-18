@@ -30,6 +30,11 @@ def add_director():
         db.session.add(d1)
         db.session.commit()
         return redirect('/')
+#==================Displays all Rigistered Movies==========================
+@app.route('/all_movies',methods=['GET','POST'])
+def all_movies():
+    movies = Movie.query.all()
+    return render_template('all_movs.html', movies = movies)
 
 
 
