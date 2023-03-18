@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = 'utf-8'>
+    <meta http-equiv="X-UA-Comptible" content = "IE=edge">
+    <meta name = "viewport" content="width=devie-width, initial-scale=1.0">
+    <title>All Movies by {{d1.name}}</title>
+</head>
+<body>
+    {% if movies|length == 0 %}
+    <h1> No Movies Found for {{d1.name}}</h1>
+
+    {% else %}
+    <h1>Movies by {{d1.name}}</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr> 
+        {% for movie in movies %}
+            <tr>
+                <td>{{movie.m_id}}</td>
+                <td>{{movie.name}}</td>
+                <td>                  
+                    <a type = "button" href="/see_movie/{{movie.m_id}}/del_dir_for_movie/{{d1.d_id}}">Delete</a>  
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <div>
+        <a href="/">See all Directors</a>
+    </div>
+
+</body>
+</html>

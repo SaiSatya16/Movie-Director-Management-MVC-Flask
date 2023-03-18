@@ -46,7 +46,12 @@ def add_movie():
         db.session.add(m1)
         db.session.commit()
         return redirect('/all_movies')
-
+#==================Movies by Director======================================   
+@app.route("/see_movie/<int:id>",methods=["GET","POST"])
+def director_movie(id):
+    d1 = Director.query.get(id)
+    movies = d1.films
+    return render_template("movies_by_director.html", d1 = d1, movies = movies)
 
 
 
