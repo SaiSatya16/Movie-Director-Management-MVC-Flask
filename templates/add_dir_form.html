@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Director</title>
-</head>
-<body>
-    <h1>Add New Director</h1>
-    <form action="/add_director" method="post">
-        <label for="d_name">Director Name</label>
-        <input type="text" id="d_name" name="d_name">
-        <input type="submit" value="+Add">
-    </form>
-</body>
+  </head>
+  <body>
+    <div class="add-dir-container d-flex flex-row justify-content-center mt-5">
+      <div class="container">
+        <h1 class="heading">Add New Director</h1>
+        <form action="/add_director" method="post">
+          <label for="d_name">Director Name</label>
+          <input
+            type="text"
+            id="d_name"
+            name="d_name"
+            class="dir-name-inp"
+            placeholder="Enter Director name"
+          />
+          <input type="submit" value="+Add" />
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
+<style>
+  body {
+    background-image: radial-gradient(#fff8db, #fae38c);
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+  }
+  .heading {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    text-align: center;
+  }
+  .dir-name-inp {
+    width: 100%;
+    height: 30px;
+    border-width: 0px;
+  }
+</style>
