@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <title>Add Director</title>
   </head>
   <body>
@@ -11,15 +17,17 @@
       <div class="container">
         <h1 class="heading">Add New Director</h1>
         <form action="/add_director" method="post">
-          <label for="d_name">Director Name</label>
+          <label for="d_name" class="dir-inp-label">Director Name</label>
           <input
             type="text"
             id="d_name"
             name="d_name"
             class="dir-name-inp"
-            placeholder="Enter Director name"
+            placeholder="Enter Director's name"
           />
-          <input type="submit" value="+Add" />
+          <div class="d-flex flex-row justify-content-center mt-3">
+            <button type="submit" value="+Add" class="submit-inp">+ADD</button>
+          </div>
         </form>
       </div>
     </div>
@@ -28,6 +36,7 @@
 <style>
   body {
     background-image: radial-gradient(#fff8db, #fae38c);
+    /* background-image: url("directorlogo.jpg"); */
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -36,9 +45,95 @@
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     text-align: center;
   }
+  .dir-inp-label {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 20px;
+  }
   .dir-name-inp {
+    background-color: white;
     width: 100%;
-    height: 30px;
-    border-width: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e4e7eb;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 15px;
+  }
+
+  .submit-inp {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+  }
+
+  .submit-inp:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+
+  .submit-inp:active {
+    color: #000;
+  }
+
+  .submit-inp:active:after {
+    background: transparent;
+  }
+
+  .submit-inp:hover:before {
+    opacity: 1;
+  }
+
+  .submit-inp:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
   }
 </style>
